@@ -1,16 +1,54 @@
-# tractian_test_mobile
+# TRACTIAN Flutter Project
 
-A new Flutter project.
+Este projeto foi desenvolvido como parte de um desafio para a **TRACTIAN**. Trata-se de um aplicativo desenvolvido em **Flutter**, com foco em uma arquitetura organizada, seguindo boas práticas de desenvolvimento, e priorizando a funcionalidade **offline first** utilizando SQLite.
 
-## Getting Started
+## Estrutura de Pastas
 
-This project is a starting point for a Flutter application.
+A estrutura de pastas foi projetada para ser direta e fácil de entender, organizada da seguinte forma:
 
-A few resources to get you started if this is your first Flutter project:
+- **`api/`**  
+  Contém a classe `UseApi`, responsável por todas as chamadas de API necessárias para o aplicativo.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **`bloc/`**  
+  Segue o padrão **BLoC** (Business Logic Component) para gerenciar estados.  
+  - Subpastas dividem os conjuntos de BLoC:  
+    - **`state`**: Define os estados possíveis.  
+    - **`event`**: Define os eventos que podem disparar alterações no estado.  
+    - **`bloc`**: Contém a lógica de negócios central.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **`components/`**  
+  Contém widgets personalizados reutilizáveis para todo o projeto.
+
+- **`helpers/`**  
+  Inclui classes auxiliares como `DB`, implementada no padrão **Singleton**, para gerenciar a instância do SQLite e garantir o funcionamento **offline first**.
+
+- **`models/`**  
+  Modelos de dados para interações com APIs e armazenamento local.
+
+- **`pages/`**  
+  Contém as telas/páginas do aplicativo.
+
+- **`repositories/`**  
+  Classes responsáveis por salvar e recuperar dados da instância SQLite.
+
+- **`routes/`**  
+  Contém a configuração de rotas e nomes de rotas para a navegação no aplicativo.
+
+- **`services/`**  
+  Isola lógicas de negócios complexas, como filtros e outras operações avançadas utilizando **Dart**.
+
+- **`styles/`**  
+  Centraliza o uso de imagens, ícones e cores para manter consistência no design do aplicativo.
+
+
+## Funcionalidades
+
+- **Offline First**: O aplicativo funciona sem conexão à internet, armazenando os dados localmente no SQLite.
+- **Gerenciamento de Estado**: Implementado com o padrão BLoC e suporte do Provider.
+- **Filtro**: Lógica de filtragem otimizada para manipular dados conforme as regras de negócio.
+
+## Instruções para Execução
+
+1. **Clone o Repositório**:
+   ```bash
+   git clone https://github.com/alefe-g/tractian_test_mobile.git
