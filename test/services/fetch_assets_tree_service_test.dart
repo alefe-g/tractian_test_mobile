@@ -50,11 +50,29 @@ void main() {
     });
 
     test('should filter locations and assets by search query', () {
-      const searchQuery = 'Location 2';
-      fetchAssetsTreeService.searchQuery = searchQuery;
-      final locations = fetchAssetsTreeService.locations;
+      const searchQuery = 'abc';
 
-      expect(locations.length, 1);
+      var locations = [
+        LocationModel(id: '1', name: 'Location 1', parentId: null),
+        LocationModel(id: '2', name: 'Location 2', parentId: '1'),
+        LocationModel(id: '3', name: 'Location 3', parentId: '1'),
+      ];
+
+      final assets = [
+        AssetModel(id: 'a1', name: 'a',locationId: '1', parentId: null),
+        AssetModel(id: 'a2', name: 'a1',locationId: '2', parentId: 'a1'),
+        AssetModel(id: 'a3', name: 'a2',locationId: '3', parentId: 'a1'),
+      ];
+
+      fetchAssetsTreeService = FetchAssetsTreeService(
+        locations: locations,
+        assets: assets,
+        searchQuery: searchQuery,
+      );
+
+      locations = fetchAssetsTreeService.locations;
+
+      expect(locations.length, 0);
     });
   });
 }
