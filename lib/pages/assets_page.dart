@@ -17,6 +17,7 @@ class AssetsPage extends StatefulWidget {
 class _AssetsPageState extends State<AssetsPage> {
   String? companyId;
   AssetBloc? assetBloc;
+  String? searchQuery;
   String? sensorStatus;
 
   @override
@@ -69,9 +70,15 @@ class _AssetsPageState extends State<AssetsPage> {
           ),
           child: TextField(
             onChanged: (value) {
+              if (value.isEmpty) {
+                searchQuery = null;
+              } else {
+                searchQuery = value;
+              }
+
               assetBloc?.addEvent(FetchAssetsEvent(
                 companyId ?? '',
-                searchQuery: value.isNotEmpty ? value : null,
+                searchQuery: searchQuery,
                 status: sensorStatus,
               ));
             },
@@ -115,6 +122,7 @@ class _AssetsPageState extends State<AssetsPage> {
 
             assetBloc?.addEvent(FetchAssetsEvent(
               companyId ?? '',
+              searchQuery: searchQuery,
               status: sensorStatus,
             ));
           }),
@@ -154,6 +162,7 @@ class _AssetsPageState extends State<AssetsPage> {
 
             assetBloc?.addEvent(FetchAssetsEvent(
               companyId ?? '',
+              searchQuery: searchQuery,
               status: sensorStatus,
             ));
           }),
