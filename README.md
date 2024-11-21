@@ -55,6 +55,7 @@ A estrutura de pastas foi projetada para ser direta e fácil de entender, organi
 2. **Assista ao Vídeo**:
   ```bash
   https://drive.google.com/file/d1xwmTnP7NBXEz63VqxUvZ7NQEejJCMm00/view?usp=drivesdk
+  ```
 
 3. **Melhorias Futuras**
 
